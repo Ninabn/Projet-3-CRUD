@@ -26,7 +26,7 @@ echo $sql . "<br>" . $e->getMessage();
 $bdd = null;
 
 
-header('Location: http://localhost/ampoule/historique.php');
+header('Location: http://localhost/Projet-ampoule/historique.php');
 
 
 $content = ob_get_clean();

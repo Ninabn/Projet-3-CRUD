@@ -1,36 +1,38 @@
-<?php
-$title = "Inscription";
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CSS only -->
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet">
 
-ob_start();
-?>
+    <title>Connexion</title>
 
-<div style="display: flex; justify-content: center;">
-<section id="user_form">
+</head>
+<body>
+<div id="user_form">
+<section>
 
-<h1 class="text-center">Ampoule</h1>
+<h1 class="text-center p-3">Ampoules</h1>
 
-<div class="container">
+<div id="form-color" class="container bg-light border rounded p-5 Regular shadow">
 
-<h2>Créer un compte</h2>
-<form action="inscription.php" method="post">
-<div class="mb-3">
-        <label for="exampleInputEmail1" class="form-label">Email</label>
-        <input name="email_user" type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com" required>
-    </div>
+<h2 class="pb-5">Créer un compte</h2>
+<form action="login.php" method="post">
 
     <div class="mb-3">
-        <label for="name" class="form-label">Nom d'utilisateur( 4 à 8 lettres)</label>
-        <input type="text" id="name" class="form-control" name="name_user" placeholder="Nom" minlength="4" maxlength="8" required>
+        <label for="name" class="form-label">Nom d'utilisateur( 4 à 20 lettres)</label>
+        <input type="text" id="name" class="form-control" name="name_concierge" placeholder="Nom" minlength="4" maxlength="20" required>
     </div>
 
     <div class="mb-3">
         <label for="inputPassword" class="form-label">Mot de passe</label>
-        <input name="password_user" type="password" class="form-control" id="inputPassword" required>        
+        <input name="password_concierge" type="password" class="form-control" id="inputPassword" required>        
     </div>
 
     <div class="text-center">
-        <button type="submit" class="btn btn-success">S'inscrire</button>
-        <a href="login.php" type="button" class="btn btn-secondary">Se connecter</a>
+        <button type="submit" class="btn btn-primary">Se connecter</button>
     </div>
 
     </form>
@@ -38,8 +40,5 @@ ob_start();
 
 </section>
 </div>
-
-
-<?php
-$content = ob_get_clean();
-require "template.php";
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"></script> 
+</body>

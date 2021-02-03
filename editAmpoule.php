@@ -66,7 +66,7 @@ if($resultat){
     echo "Une erreur est survenue";
 }
 
-header('Location: http://localhost/ampoule/historique.php');
+header('Location: http://localhost/Projet-ampoule/historique.php');
 
 $content = ob_get_clean();
 require "template.php";

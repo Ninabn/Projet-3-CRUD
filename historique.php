@@ -14,7 +14,7 @@ try{
 }
 
 //Titre de la page et bouton create
-echo'<h1 class="text-center">Historique des ampoules </h1>';
+echo'<h1 class="text-center p-5">Historique des ampoules </h1>';
 
 ?>
 
@@ -76,6 +76,9 @@ Ajouter une ampoule
     <input type="text" class="form-control" name="prix_ampoule" required>
   </div>
 
+  <div class="mb-3">
+    <input type="hidden" class="form-control" name="nom_concierge" value="<?=$_SESSION['id_concierge']?>" required>
+  </div>
 
     </div>
 
@@ -96,18 +99,24 @@ Ajouter une ampoule
             <th>Etage</th>
             <th>Position</th>
             <th>Prix</th>
-            <th>Supprimer</th>
-            <th>Détails</th>
-            <th>Editer</th>
+            <th>Concierge</th>
+            <th></th>
+            <th></th>
+            <th></th>
         </tr>
     </thead>
 
     <tbody>
             <!------AFFICHAGE DES PRODUIT ONE BY ONE----------->
     <?php
-        $req = "SELECT * FROM ampoules ORDER BY date_changement DESC";
+        $req = "SELECT * FROM ampoules INNER JOIN concierges ON concierges.id_concierge = ampoules.concierge_id ORDER BY date_changement DESC";
+        $i = 0;
         foreach($bdd->query($req) as $row){
+
         $date_formater = new DateTime($row['date_changement']);
+    
+          if ($i++ == 5) break;
+        
     ?>
 
     <tr>
@@ -115,6 +124,7 @@ Ajouter une ampoule
         <td><?= $row['etage'] ?></td>
         <td><?= $row['position_ampoule'] ?></td>
         <td><?= $row['prix_ampoule'] ?> €</td>
+        <td><?= $row['nom_concierge'] ?> </td>
                 
     <!------------------------------------------ Button modal Supprimer ------------------------------------------------------------------->
 <td>
@@ -145,12 +155,12 @@ Ajouter une ampoule
 
 <!---------------------------------------------------- Button modal détail ------------------------------------------------------------------>
 <td>
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#detail<?= $row['id_ampoule'] ?>">
         Détail
     </button>
 </td>
 <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="detail<?= $row['id_ampoule'] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -162,11 +172,12 @@ Ajouter une ampoule
             <li class="list-group-item"> Date du changement : <?= $date_formater->format('d/m/Y à H:i')?></li>
             <li class="list-group-item"> Etage : <?= $row['etage'] ?></li>
             <li class="list-group-item"> Position de l'ampoule : <?= $row['position_ampoule'] ?></li>
-            <li class="list-group-item">Prix : <?= $row['prix_ampoule'] ?></li>
+            <li class="list-group-item">Prix : <?= $row['prix_ampoule'] ?> €</li>
+            <li class="list-group-item">Concierge : <?= $row['nom_concierge'] ?> </li>
         </ul>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Fermer</button>
+        <button  type="button" class="btn btn-danger" data-bs-dismiss="modal">Fermer</button>
       </div>
     </div>
   </div>

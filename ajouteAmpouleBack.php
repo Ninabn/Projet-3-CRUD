@@ -9,6 +9,9 @@ $etage = htmlspecialchars($_POST['etage']);
 $position = htmlspecialchars($_POST['position_ampoule']);
 $prix = htmlspecialchars($_POST['prix_ampoule']);
 
+$name = $_POST['nom_concierge'];
+var_dump($name);
+
 try{
     $user = "root";
     $pass = "";
@@ -16,8 +19,8 @@ try{
     //debug
     $bdd-> setAttribute(PDO:: ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-$sql = "INSERT INTO ampoules (date_changement, etage, position_ampoule, prix_ampoule)
-  VALUES ('$date', '$etage', '$position', '$prix')";
+$sql = "INSERT INTO ampoules (date_changement, etage, position_ampoule, prix_ampoule, concierge_id)
+  VALUES ('$date', '$etage', '$position', '$prix', '$name')";
 
 $bdd->exec($sql);
   echo "";
@@ -27,7 +30,7 @@ $bdd->exec($sql);
 }
 
 
-header('Location: http://localhost/ampoule/historique.php');
+header('Location: http://localhost/Projet-ampoule/historique.php');
 
 $content = ob_get_clean();
 require "template.php";
