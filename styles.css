@@ -1,0 +1,20 @@
+body{
+    background: rgb(207,199,45);
+background: radial-gradient(circle, rgba(207,199,45,1) 0%, rgba(166,207,93,1) 100%);
+}
+
+#form-color {
+    background-color: #a0c6c1!important;
+    color: #484848;
+}
+
+#user_form{
+    display: flex; 
+    justify-content: center;
+    
+}
+
+#form-color {
+    background: rgb(207,199,45);
+background: radial-gradient(circle, rgba(207,199,45,1) 0%, rgba(166,207,93,1) 100%);
+}

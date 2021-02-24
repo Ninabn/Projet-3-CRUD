@@ -23,7 +23,7 @@ $sql = "INSERT INTO ampoules (date_changement, etage, position_ampoule, prix_amp
   VALUES ('$date', '$etage', '$position', '$prix', '$name')";
 
 $bdd->exec($sql);
-  echo "";
+  
 
 }catch(PDOException $exception){
     die("Error : " .$exception->getMessage());
